@@ -1,0 +1,73 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "./.data"
+      ],
+      "usage-guides": "You must have access to the allowed directories and their subdirectories. \\nYour allowed directories: ['./.data'] \\nYour current root path: '.'"
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "BSA2btOZyZZTrcUQbG1UImLpSNyZh9D"
+      },
+      "usage-guides": "Too rapid tool calls using loops, etc. can exceed the rate limit of the MCP server. Set an appropriate wait time."
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+    },
+    "mcp-server-firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "fc-39d5cb26e969452eb67e4a16d2ea320e",
+
+        "FIRECRAWL_RETRY_MAX_ATTEMPTS": "5", 
+        "FIRECRAWL_RETRY_INITIAL_DELAY": "2000",
+        "FIRECRAWL_RETRY_MAX_DELAY": "30000",
+        "FIRECRAWL_RETRY_BACKOFF_FACTOR": "3",
+
+        "FIRECRAWL_CREDIT_WARNING_THRESHOLD": "2000",
+        "FIRECRAWL_CREDIT_CRITICAL_THRESHOLD": "500"
+      },
+      "usage-guides": "1. If you have a parameter to retrieve only the main content of crawl and scrape results, like 'onlyMainContent', always set it to 'True', otherwise the results will be too long. \n2. Repeated scraping without waiting time can cause rate limit exceeded error of fire crawl MCP server or blocking of webpage. When calling crawling and scraping repeatedly through loops, etc., set an appropriate waiting time."
+    },
+    "chroma": {
+        "command": "uvx",
+        "args": [
+            "chroma-mcp",
+            "--client-type",
+            "persistent",
+            "--data-dir",
+            "./.data/DB_folder"
+        ],
+        "usage-guides": "- if output of chroma_list_collections() is None, it means that there are no collections in the chroma DB.\n - When saving text information in DB, do not encode it with base64!\n- Take advantage of semantic search using chroma_query_documents()!"
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "sbp_4c4dcc96481f3e719e115ccd1ed0329051c85032"
+      ]
+    },
+    "pdf-parser": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:/code/lloydk_3rd/mcp_server_pdf_parser",
+        "run",
+        "server.py"
+      ]
+    }
+  }
+}
