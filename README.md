@@ -43,7 +43,8 @@ conda activate [env_name]
 ```
 
 # 환경 변수 설정
-- .env.example 파일 참고
+- .env파일을 최상위 디렉토리에 만들어야 합니다.(.env.example 파일 참고)
+- 아래는 무시
 ```
 echo "LLM_API_KEY=[openai_api_key]" > .env # LLM_API_KEY이름에 종속되는 코드들이 많습니다. 이름은 LLM_API_KEY로 고정해야될 것 같습니다.
 (아래 key는 https://www.searchapi.io/ 가입 후 api key 발급받기)
