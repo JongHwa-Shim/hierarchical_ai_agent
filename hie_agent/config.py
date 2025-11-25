@@ -20,9 +20,9 @@ MAIN_AGENT_DEAFULT_CONFIG = {"print_process": True,
                              "react_step_limit": False, 
                              "max_react_step": 20, 
                              "llm_lib": "langchain", 
-                             "llm_name": "o1", # Allowed values: "gpt-4o" or "o1" 
+                             "llm_name": "gpt-5-mini", # Allowed values: "gpt-4o", "o1", "gpt-5-mini" or "gpt-5-nano"
                              "max_tokens": 200000, 
-                             "reasoning_effort": "high", # Allowed values: "high" or "low". Note: only available for "o1" model.
+                             "reasoning_effort": "medium", # Allowed values: "high", "medium", "low".
                              "temperature": 0.7, 
                              "llm_api_key": os.getenv("LLM_API_KEY")}
 
@@ -30,10 +30,10 @@ SUB_AGENT_DEAFULT_CONFIG = {"print_process": True,
                             "streaming": False, 
                             "planning_feedback": False, 
                             "react_step_limit": False, 
-                            "max_react_step": 10, 
+                            "max_react_step": 100, 
                             "llm_lib": "langchain", 
-                            "llm_name": "o1", # Allowed values: "gpt-4o" or "o1".
-                            "reasoning_effort": "high", # Allowed values: "high" or "low". Note: only available for "o1" model.
+                            "llm_name": "gpt-5-mini", # Allowed values: "gpt-4o", "o1", "gpt-5-mini" or "gpt-5-nano"
+                            "reasoning_effort": "low", # Allowed values: "high", "medium", "low".
                             "temperature": 0.1, 
                             "max_tokens": 200000, 
                             "llm_api_key": os.getenv("LLM_API_KEY")}

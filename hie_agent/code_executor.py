@@ -113,7 +113,7 @@ async def {wrapper_func_name}():
         result = output.getvalue()
         sys.stdout = self._original_stdout  # 원래 stdout으로 복구
 
-        if 'final_answer' in code: # TODO: 에러코드를 observation으로 출력하도록
+        if 'final_answer(' in code: # TODO: 에러코드를 observation으로 출력하도록, 이거 예외처리 너무 원시적임... 
             is_final_answer = True
         else:
             is_final_answer = False
@@ -163,7 +163,7 @@ async def {wrapper_func_name}():
                 print(f"경고: '{lib_name}' 라이브러리는 허용되지 않은 라이브러리입니다.")
                 continue
 
-            # 허용된 라이브러리만 import
+            # 허용되지않은 라이브러리는 경고 출력 (막지는 않음)
             if lib_name not in self.global_variables:
                 try:
                     self.global_variables[lib_name] = importlib.import_module(lib_name)

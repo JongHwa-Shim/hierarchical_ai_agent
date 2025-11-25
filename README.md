@@ -1,11 +1,5 @@
 # 이슈
-1. 아래의 환경변수명은 원래 LLM_API_KEY로, 다른 코드에서도 계속 LLM_API_KEY라는 이름으로 사용되는데, 여기서만 변수명이 변경되어 있고 다른 부분은 반영되어 있지 않습니다. 환경변수라서 이름에 따라 에러가 발생하거나 그럴거 같지는 않은데 바꾸신 이유가 있을까요?
-```
-echo "OPEN_API_KEY=[openai_api_key]" > .env
-```
-
-2. pdfminer.six 패키지 버전을 20240706에서 20221105로 바꾸셨습니다. 
-바꾸신 이유가 "HOCRConverter"라는 class를 찾지 못하는 오류 때문이라고 말씀하셨는데, 저는 오히려 20240706버전에서 HOCRConverter class가 있어서 오류가 안나고, 20221105 버전에서 오류가 납니다... 그래서 현재 버전은 20240706으로 사용하고 있습니다.
+1. pdfminer.six 패키지 버전이 20240706버전에서 HOCRConverter class가 있어서 오류가 안나고, 20221105 버전에서 오류가 남. 그래서 현재 버전은 20240706으로 사용하고 있습니다.
 
 # 환경 설치 및 세팅
 ## UV 환경 설치
@@ -24,11 +18,6 @@ uv python list # 지원 가능한 파이썬 버전 확인
 uv python install 3.11.12 # 설치가 안되어 있으면 설치
 uv sync # uv 환경 동기화, .venv 폴더 생성됨
 (실행) uv run main.py
-
-(pyproject.toml이 없는 경우)
-uv init --python=3.11.12 # uv 환경 초기화, pyproject.toml 생성됨
-uv add -r requirements.txt # requirements.txt 패키지 설치, .venv 폴더 생성됨
-
 ```
 
 ## 아나콘다 환경 설치

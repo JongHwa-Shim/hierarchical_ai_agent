@@ -101,9 +101,15 @@ class LLMContainer():
             from langchain.schema.output_parser import StrOutputParser
 
             if self.llm_name == "gpt-4o":
-                llm = ChatOpenAI(model_name=self.llm_name, api_key=self.config.get("llm_api_key"), temperature=self.config.get("temperature"))
+                llm = ChatOpenAI(model=self.llm_name, api_key=self.config.get("llm_api_key"), temperature=self.config.get("temperature"))
             elif self.llm_name == "o1":
-                llm = ChatOpenAI(model_name=self.llm_name, api_key=self.config.get("llm_api_key"), reasoning_effort=self.config.get("reasoning_effort"))
+                llm = ChatOpenAI(model=self.llm_name, api_key=self.config.get("llm_api_key"), reasoning_effort=self.config.get("reasoning"))
+            elif self.llm_name == "gpt-5.1":
+                llm = ChatOpenAI(model=self.llm_name, api_key=self.config.get("llm_api_key"), reasoning_effort=self.config.get("reasoning"))
+            elif self.llm_name == "gpt-5-mini":
+                llm = ChatOpenAI(model=self.llm_name, api_key=self.config.get("llm_api_key"), reasoning_effort=self.config.get("reasoning"))
+            elif self.llm_name == "gpt-5-nano":
+                llm = ChatOpenAI(model=self.llm_name, api_key=self.config.get("llm_api_key"), reasoning_effort=self.config.get("reasoning"))
                 
             parser = self.config.get("parser", StrOutputParser())
             chain =  llm | parser
